@@ -26,7 +26,7 @@ envelope.style.pointerEvents = 'none';
 
 /* ===================== */
 /* LICZNIK + ANIMACJA ZDAŃ */
-let countdownTime = 3;
+let countdownTime = 60;
 countdownEl.textContent = countdownTime;
 countdownEl.style.display = "block";
 
