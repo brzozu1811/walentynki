@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>💘 Walentynka</title>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/envelope.css">
+
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: transparent;
+    }
+
+    /* --- TŁO: ANIMOWANY GRADIENT --- */
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        
+        /* Nowy, żywy gradient */
+        background: linear-gradient(-45deg, #ff9a9e, #fecfef, #feada6, #f5efef);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    /* Animacja przesuwania kolorów tła */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* --- Treść strony --- */
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 10;
+        color: #5e2b3b;
+        text-shadow: 0 2px 4px rgba(255,255,255,0.5);
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div id="valentine">
+
+  <div id="countdownContainer">
+    <span id="countdown">10</span>
+    <div id="sentencesContainer">
+
+
+<div class="sentence">Jesteś taką niegrzeczną dziewczynką!</div>
+<div class="sentence">Chcę tylko Ciebie!</div>
+<div class="sentence">Spuszczę się w Tobie</div>
+<div class="sentence">Zerżnę Cię jak zwykłą szmatę</div>
+<div class="sentence">Jak dobrze mi w Twojej cipce!</div>
+<div class="sentence">Jesteś taka mokra…</div>
+<div class="sentence">Twoja cipka jest idealna dla mojego kutasa</div>
+<div class="sentence">Jesteś moją dziwką</div>
+<div class="sentence">Wypełnię Cię swoją spermą</div>
+<div class="sentence">Niech wszyscy widzą, że jesteś moja suko!</div>
+<div class="sentence">Kochanie, jesteś taka seksowna</div>
+<div class="sentence">Sprawiasz, że ciągle jestem napalony</div>
+<div class="sentence">Tak Cię zerżnę, że nie będziesz mogła chodzić</div>
+<div class="sentence">Myślałem o tym cały dzień</div>
+<div class="sentence">Chcę tylko Ciebie, jestem tylko Twój</div>
+<div class="sentence">Klękaj i bierz go do buzi</div>
+<div class="sentence">Ale się zaciskasz wokół mojego penisa</div>
+<div class="sentence">Jestem taki twardy jak tylko Cię widzę</div>
+<div class="sentence">Jesteś taka wilgotna i rozpalona</div>
+<div class="sentence">Twoje ciało mnie tak kręci</div>
+<div class="sentence">Dojdź na moim kutasie, suko</div>
+<div class="sentence">Uwielbiam Cię w tych stringach</div>
+<div class="sentence">Dojdź dla mnie teraz</div>
+<div class="sentence">Spraw, żebym doszedł w Twoich ustach</div>
+<div class="sentence">Pokaż mi te piękne cycki, pobaw się nimi!</div>
+<div class="sentence">Tak Cię wyrucham, że zapomnisz jak masz na imię</div>
+<div class="sentence">Tak mi dobrze, że zaraz dojdę</div>
+<div class="sentence">Powiedz, że jesteś moją dziwką</div>
+<div class="sentence">Kocham sprawiać, że jęczysz z rozkoszy</div>
+<div class="sentence">Tak bardzo mnie nakręcasz</div>
+<div class="sentence">Jesteś moją gwiazdą porno!</div>
+<div class="sentence">Błagaj mnie, żebym pozwolił Ci dojść</div>
+<div class="sentence">Jestem cały Twój</div>
+<div class="sentence">Spuszczę się tak głęboko w Tobie</div>
+<div class="sentence">Zaraz się Tobą zajmę</div>
+<div class="sentence">Jęcz moje imię, chcę Cię słyszeć</div>
+<div class="sentence">Wypnij się i rozłóż nogi</div>
+<div class="sentence">Tak bardzo mnie podniecasz</div>
+<div class="sentence">Nie wolno Ci jeszcze dojść, bądź grzeczna</div>
+<div class="sentence">Mmmm… ale pysznie smakujesz</div>
+<div class="sentence">Włóż w siebie palce, a ja popatrzę</div>
+<div class="sentence">Zdejmij ubrania i wypnij tyłek</div>
+<div class="sentence">Wyglądasz teraz tak seksownie</div>
+<div class="sentence">Powiedz, jak bardzo chcesz, żebym w Ciebie wszedł</div>
+<div class="sentence">Tak dobrze go ssiesz…</div>
+<div class="sentence">Czego pragniesz kotku?</div>
+<div class="sentence">Nigdy nie byłem tak twardy, jak teraz</div>
+<div class="sentence">Jesteś taka seksowna, jak skaczesz na moim kutasie</div>
+<div class="sentence">Chcę skosztować tej pięknej cipki</div>
+<div class="sentence">Nie wyobrażasz sobie, jak bardzo mnie podniecasz</div>
+      
+<script>
+const emojis = ["❤️", "💖", "🔥", "😈", "😍", "🥰", "💋", "💘", "💝", "😻", "🥵"];
+
+const sentenceDivs = document.querySelectorAll(".sentence");
+
+sentenceDivs.forEach(div => {
+    // Losujemy indeks z tablicy emojis
+    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    
+    // Doklejamy spację i emotkę do aktualnego tekstu
+    div.innerText += " " + randomEmoji;
+});
+</script>
+        <div id="readySentence">Możesz już otworzyć ten list złotko 💌</div>
+    </div>
+  </div>
+
+  <div class="letter-image" onclick="openLetter()">
+    <div class="animated-mail">
+      <div class="back-fold"></div>
+      <div class="letter">
+        <div class="letter-border"></div>
+        <div class="letter-title"></div>
+        <div class="letter-context"></div>
+        <div class="letter-stamp">
+          <div class="letter-stamp-inner"></div>
+        </div>
+      </div>
+      <div class="top-fold"></div>
+      <div class="body"></div>
+      <div class="left-fold"></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+
+  <div id="letterBox">
+      <h1>Zostaniesz moją walentynką? 💖</h1>
+      
+    <button id="yes">
+      <svg class="empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+        <path fill="none" d="M0 0H24V24H0z"></path>
+        <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604c.881-.556 1.676-1.109 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5 5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903.745.592 1.54 1.145 2.421 1.7.299.189.595.37.934.572.339-.202.635-.383.934-.571z"></path>
+      </svg>
+      <svg class="filled" height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0H24V24H0z" fill="none"></path>
+        <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+      </svg>
+      Tak
+    </button>
+
+    <button id="ofc">
+      <svg class="empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+        <path fill="none" d="M0 0H24V24H0z"></path>
+        <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604c.881-.556 1.676-1.109 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5 5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903.745.592 1.54 1.145 2.421 1.7.299.189.595.37.934.572.339-.202.635-.383.934-.571z"></path>
+      </svg>
+      <svg class="filled" height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0H24V24H0z" fill="none"></path>
+        <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+      </svg>
+      Oczywiście
+    </button>
+    <button id="no">
+      <svg class="empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
+        <path fill="none" d="M0 0H24V24H0z"></path>
+        <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604c.881-.556 1.676-1.109 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5 5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903.745.592 1.54 1.145 2.421 1.7.299.189.595.37.934.572.339-.202.635-.383.934-.571z"></path>
+      </svg>
+      <svg class="filled" height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0H24V24H0z" fill="none"></path>
+        <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+      </svg>
+      Nawet nie pomyślałam, że nie
+    </button>
+
+
+
+
+<div id="kutas" style="position:relative; width:400px; height:200px; border:none;">
+  
+  <!-- Serce 1 -->
+  <p id="serce1" style="position:absolute; top:20px; left:30px; display:inline-block; width:30px; height:27px; transform:rotate(-45deg); animation:pulse 4s ease-in-out infinite; background:linear-gradient(135deg, #ff9ec4, #ff66a3);">
+    <span style="position:absolute;width:30px;height:27px;background:linear-gradient(135deg, #ff9ec4, #ff66a3);border-radius:50%;top:-15px;left:0;"></span>
+    <span style="position:absolute;width:30px;height:27px;background:linear-gradient(135deg, #ff9ec4, #ff66a3);border-radius:50%;top:0;left:15px;"></span>
+  </p>
+
+  <!-- Serce 2 -->
+  <p id="serce2" style="position:absolute; top:50px; left:150px; display:inline-block; width:40px; height:36px; transform:rotate(-45deg); animation:pulse 5s ease-in-out infinite; background:linear-gradient(135deg, #ffb3d9, #ff6699);">
+    <span style="position:absolute;width:40px;height:36px;background:linear-gradient(135deg, #ffb3d9, #ff6699);border-radius:50%;top:-18px;left:0;"></span>
+    <span style="position:absolute;width:40px;height:36px;background:linear-gradient(135deg, #ffb3d9, #ff6699);border-radius:50%;top:0;left:20px;"></span>
+  </p>
+
+  <!-- Serce 3 -->
+  <p id="serce3" style="position:absolute; top:100px; left:70px; display:inline-block; width:25px; height:23px; transform:rotate(-45deg); animation:pulse 3s ease-in-out infinite; background:linear-gradient(135deg, #ff99cc, #ff3366);">
+    <span style="position:absolute;width:25px;height:23px;background:linear-gradient(135deg, #ff99cc, #ff3366);border-radius:50%;top:-12px;left:0;"></span>
+    <span style="position:absolute;width:25px;height:23px;background:linear-gradient(135deg, #ff99cc, #ff3366);border-radius:50%;top:0;left:12px;"></span>
+  </p>
+
+  <!-- Serce 4 -->
+  <p id="serce4" style="position:absolute; top:20px; left:250px; display:inline-block; width:35px; height:32px; transform:rotate(-45deg); animation:pulse 4.5s ease-in-out infinite; background:linear-gradient(135deg, #ffccdd, #ff3399);">
+    <span style="position:absolute;width:35px;height:32px;background:linear-gradient(135deg, #ffccdd, #ff3399);border-radius:50%;top:-16px;left:0;"></span>
+    <span style="position:absolute;width:35px;height:32px;background:linear-gradient(135deg, #ffccdd, #ff3399);border-radius:50%;top:0;left:17px;"></span>
+  </p>
+
+  <!-- Serce 5 -->
+  <p id="serce5" style="position:absolute; top:120px; left:250px; display:inline-block; width:45px; height:41px; transform:rotate(-45deg); animation:pulse 5s ease-in-out infinite; background:linear-gradient(135deg, #ffb3d9, #ff0066);">
+    <span style="position:absolute;width:45px;height:41px;background:linear-gradient(135deg, #ffb3d9, #ff0066);border-radius:50%;top:-20px;left:0;"></span>
+    <span style="position:absolute;width:45px;height:41px;background:linear-gradient(135deg, #ffb3d9, #ff0066);border-radius:50%;top:0;left:22px;"></span>
+  </p>
+
+  <style>
+    @keyframes pulse {
+      0%,50%,100% { transform:rotate(-45deg) scale(2); }
+      25%,75% { transform:rotate(-45deg) scale(2.2); }
+    }
+  </style>
+
+</div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+<div id="particles-js"></div>
+
+<script src="js/config.js"></script>
+<script src="js/walentynka.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+    /* Obrazek serca SVG */
+    var heartSVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23e91e63' d='M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z'%2F%3E%3C%2Fsvg%3E";
+
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 45, /* Ilość serc */
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "shape": {
+          "type": "image",
+          "image": {
+            "src": heartSVG,
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.7,
+          "random": true
+        },
+        "size": {
+          "value": 25, /* Bazowa wielkość */
+          "random": true,
+          "anim": {
+            "enable": true, /* WŁĄCZONE PULSOWANIE */
+            "speed": 10,    /* Szybkość pulsowania */
+            "size_min": 15, /* Minimalny rozmiar */
+            "sync": false
+          }
+        },
+        /* LINIE ŁĄCZĄCE SERCA */
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#e91e63",
+          "opacity": 0.4,
+          "width": 1
+        },
+        /* RUCH SERC */
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "bubble" /* Reakcja na myszkę */
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "bubble": {
+            "distance": 200,
+            "size": 40,
+            "duration": 2,
+            "opacity": 1
+          }
+        }
+      },
+      "retina_detect": true
+    });
+
+// --- 7. REAKCJE NA TAK ---
+    
+    // Zabezpieczenie: Jeśli funkcja send nie istnieje w innym pliku, tworzymy pustą, żeby nie było błędu
+    if (typeof send === 'undefined') {
+        window.send = function(msg) { console.log("Wysłano (symulacja): " + msg); };
+    }
+
+    document.getElementById("yes").onclick = () => {
+        send("💖 TAK!");
+        finish("Dziewczyno to było pewne 😍");
+    };
+
+    document.getElementById("ofc").onclick = () => {
+        send("🥰 Oczywiście!");
+        finish("Jesteś kochana! 💘");
+    };
+
+    function finish(text) {
+        document.getElementById("letterBox").innerHTML = `<h1>${text}</h1>`;
+        
+        // URUCHAMIAMY EKSPLOZJĘ KILKA RAZY (Seria wybuchów)
+        createEmojiExplosion();
+        setTimeout(createEmojiExplosion, 300);
+        setTimeout(createEmojiExplosion, 600);
+        setTimeout(createEmojiExplosion, 900);
+        setTimeout(createEmojiExplosion, 1200);
+        setTimeout(createEmojiExplosion, 1500);
+        setTimeout(createEmojiExplosion, 1800);
+        setTimeout(createEmojiExplosion, 2100);
+        setTimeout(createEmojiExplosion, 2400);
+        setTimeout(createEmojiExplosion, 2700);
+        setTimeout(createEmojiExplosion, 3000);
+        setTimeout(createEmojiExplosion, 3300);
+        setTimeout(createEmojiExplosion, 3600);
+        setTimeout(createEmojiExplosion, 3900);
+        setTimeout(createEmojiExplosion, 4200);
+    }
+
+    // --- FUNKCJA TWORZĄCA FONTANNĘ EMOTEK ---
+    function createEmojiExplosion() {
+        // Lista ikonek do wylosowania
+        const emojis = ['💖', '😍', '💘', '💝', '🌹', '😻', '🔥',];
+        const amount = 15; // Ile emotek naraz
+
+        for (let i = 0; i < amount; i++) {
+            const particle = document.createElement("div");
+            particle.classList.add("emoji-particle");
+            
+            // Losuj emotkę
+            particle.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Losowa wielkość
+            particle.style.fontSize = (Math.random() * 30 + 20) + "px";
+            
+            // Losowa pozycja startowa na dole ekranu
+            particle.style.left = (Math.random() * 100) + "vw";
+        particle.style.transform = "translate(0, 0)";
+
+            document.body.appendChild(particle);
+
+            void particle.offsetWidth;
+
+            // Obliczanie lotu (fontanna)
+            // X: rozrzut na boki, Y: lot do góry
+            const destX = (Math.random() - 0.5) * 60; // Rozrzut na boki (vw)
+            const destY = -(Math.random() * 100 + 50); // Wysokość lotu (vh)
+            const rotate = Math.random() * 720; // Obrót w locie
+
+            // Uruchom animację w następnej klatce
+            setTimeout(() => {
+                particle.style.transform = `translate(${destX}vw, ${destY}vh) rotate(${rotate}deg)`;
+                particle.style.opacity = "0";
+            }, 10);
+
+            // Sprzątanie po animacji
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+    }
+</script>
+
+</body>
+</html>

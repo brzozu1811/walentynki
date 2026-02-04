@@ -1,0 +1,578 @@
+
+
+
+
+/* ===================== */
+/* BODY I TŁO */
+body {
+	background: #f181d7;
+	position: relative;
+	overflow: hidden;
+}
+
+body.letter-open {
+	background: radial-gradient(circle at center, rgba(255,200,220,0.2), transparent 70%);
+}
+
+/* ===================== */
+/* KOPERTA I ANIMACJE */
+.letter-image {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 200px;
+	height: 200px;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
+	z-index: 1000;
+}
+
+.animated-mail {
+	position: absolute;
+	height: 150px;
+	width: 200px;
+	transition: .4s;
+	transform-style: preserve-3d;
+}
+
+.animated-mail .body {
+	position: absolute;
+	bottom: 0;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 0 100px 200px;
+	border-color: transparent transparent #e95f55 transparent;
+	z-index: 2;
+}
+
+.animated-mail .top-fold {
+	position: absolute;
+	top: 50px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 100px 0 100px;
+	transform-origin: 50% 0%;
+	transition: transform 0.5s ease, z-index 0.1s ease;
+	border-color: #cf4a43 transparent transparent transparent;
+	z-index: 2;
+}
+
+.animated-mail .back-fold {
+	position: absolute;
+	bottom: 0;
+	width: 200px;
+	height: 100px;
+	background: #cf4a43;
+	z-index: 0;
+}
+
+.animated-mail .left-fold {
+	position: absolute;
+	bottom: 0;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 0 50px 100px;
+	border-color: transparent transparent transparent #e15349;
+	z-index: 2;
+}
+
+.animated-mail .letter {
+	left: 20px;
+	bottom: 0;
+	position: absolute;
+	width: 160px;
+	height: 60px;
+	background: white;
+	z-index: 1;
+	overflow: hidden;
+	border-radius: 6px;
+	transition: all 0.6s ease 0.5s; /* delay = czeka na top-fold */
+}
+
+.letter .letter-border {
+	height: 10px;
+	width: 100%;
+	background: repeating-linear-gradient(
+		-45deg,
+		#cb5a5e,
+		#cb5a5e 8px,
+		transparent 8px,
+		transparent 18px
+	);
+}
+
+.letter .letter-title {
+	margin-top: 10px;
+	margin-left: 5px;
+	height: 10px;
+	width: 40%;
+	background: #cb5a5e;
+}
+
+.letter .letter-context {
+	margin-top: 10px;
+	margin-left: 5px;
+	height: 10px;
+	width: 20%;
+	background: #cb5a5e;
+}
+
+.letter .letter-stamp {
+	margin-top: 30px;
+	margin-left: 120px;
+	border-radius: 100%;
+	height: 30px;
+	width: 30px;
+	background: #cb5a5e;
+	opacity: 0.3;
+}
+
+.shadow {
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	width: 400px;
+	height: 30px;
+	transform: translateX(-50%);
+	border-radius: 100%;
+	background: radial-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0), rgba(0,0,0,0));
+	transition: .4s;
+}
+
+/* Hover koperty */
+.letter-image:hover .animated-mail {
+	transform: translateY(50px);
+}
+
+.letter-image:hover .animated-mail .top-fold {
+	transform: rotateX(180deg);
+	z-index: 0;
+}
+
+.letter-image:hover .animated-mail .letter {
+	height: 180px;
+}
+
+.letter-image:hover .shadow {
+	width: 250px;
+}
+
+/* ===================== */
+/* OTWARCIE LISTU */
+.letter-image.open .animated-mail .top-fold {
+	transform: rotateX(180deg);
+	transition: transform 0.5s ease;
+	z-index: 0;
+}
+
+.letter-image.open .animated-mail .letter {
+	height: 280px;
+	bottom: 120px;
+	transition: all 0.6s ease 0.5s; /* delay = czeka na top-fold */
+}
+
+/* ===================== */
+/* WALENTYNKOWY KONTAINER */
+
+
+
+#countdownContainer {
+	position: absolute;
+	top: 10%; /* nad kopertą */
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	z-index: 3000;
+	pointer-events: none;
+}
+
+#countdown {
+	font-size: 9rem; /* licznik duży */
+	color: #d82d60;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 700;
+	text-shadow: 2px 2px 10px rgba(255,150,180,0.7);
+	display: block;
+	margin-bottom: 10px;
+    text-shadow: 0 0 6px rgba(232, 15, 55, 0.8),
+	             0 0 12px rgba(255,122,163,0.6);
+}
+
+#sentencesContainer {
+	position: relative;
+	width: 100%;
+	height: 100px; /* wystarczająco miejsca na zdanie */
+	overflow: visible;
+}
+
+.sentence {
+	/* zachowujemy wszystkie dotychczasowe ustawienia */
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: clamp(2rem, 4vw, 3rem);
+	color: #d82d60;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+	opacity: 0;
+	transition: opacity 0.8s ease, transform 0.8s ease;
+	white-space: nowrap;
+
+	/* dekoracja */
+	text-shadow: 0 0 6px rgba(232, 15, 55, 0.8),
+	             0 0 12px rgba(255,122,163,0.6);
+}
+
+
+#sentencesContainer {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	overflow: visible;
+}
+
+.sentence, #readySentence {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: clamp(4rem, 4vw, 3rem);
+	color: #d82d60;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+	opacity: 0;
+	transition: opacity 0.8s ease, transform 0.8s ease;
+	white-space: nowrap;
+    text-shadow: 0 0 6px rgba(232, 15, 55, 0.8),
+	             0 0 12px rgba(255,122,163,0.6);
+}
+
+#readySentence {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: clamp(4rem, 5vw, 3.5rem);
+	color: #d82d60;
+	font-weight: 700;
+	font-family: 'Poppins', sans-serif;
+	opacity: 0;
+
+	/* dekoracja */
+	text-shadow: 0 0 6px rgba(232, 15, 55, 0.8),
+	             0 0 12px rgba(255,122,163,0.6);
+}
+
+
+#countdownContainer,
+#sentencesContainer,
+#readySentence {
+    z-index: 500; /* wyżej niż koperta (1000) i #letterBox (1500) */
+    pointer-events: none; /* żeby nie przeszkadzało w klikaniu koperty */
+}
+
+
+/* Przyciski
+#letterBox button {
+	margin: 10px;
+	padding: 15px 15px;
+	font-size: 1.2rem;
+	border: none;
+	border-radius: 30px;
+	cursor: pointer;
+	background: #e95f55;
+	color: white;
+	transition: transform 0.2s, box-shadow 0.2s;
+	position: relative;
+	overflow: hidden;
+}
+
+#letterBox button::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -75%;
+	width: 50%;
+	height: 100%;
+	background: rgba(255,255,255,0.4);
+	transform: skewX(-25deg);
+	transition: all 0.5s;
+}
+
+#letterBox button:hover::before {
+	left: 125%;
+}
+
+#letterBox button:hover {
+	transform: scale(1.1);
+	box-shadow: 0 0 20px rgba(255, 100, 150, 0.7);
+} */
+
+
+
+#letterBox button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 25px 20px 22px;
+  box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-color: #e8e8e8;
+  border: 9px solid #ffe2e2;
+  border-radius: 35px;
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: 900;
+  color: rgb(134, 124, 124);
+  font-family: monospace;
+  word-spacing: -2px;
+  position: relative;
+
+  transition:
+    transform 400ms cubic-bezier(0.68, -0.55, 0.27, 2.5),
+    border-color 400ms ease-in-out,
+    background-color 400ms ease-in-out;
+}
+
+/* animacja ramki */
+@keyframes movingBorders {
+  0%   { border-color: #fce4e4; }
+  50%  { border-color: #ffd8d8; }
+  90%  { border-color: #fce4e4; }
+}
+
+#letterBox button:hover {
+  background-color: #eee;
+  transform: scale(1.05); /* ← poprawione */
+  animation: movingBorders 3s infinite;
+}
+
+/* SVG w buttonie */
+#letterBox button svg {
+  margin-right: 11px;
+  fill: rgb(255, 110, 110);
+  transition: opacity 100ms ease-in-out;
+}
+
+/* ikona "filled" – element wewnątrz buttona */
+#letterBox button .filled {
+  position: absolute;
+  opacity: 0;
+  top: 20px;
+  left: 22px;
+}
+
+/* animacja serca */
+@keyframes beatingHeart {
+  0%   { transform: scale(1); }
+  15%  { transform: scale(1.15); }
+  30%  { transform: scale(1); }
+  45%  { transform: scale(1.15); }
+  60%  { transform: scale(1); }
+}
+
+/* hover – przełączanie ikon */
+#letterBox button:hover .empty {
+  opacity: 0;
+}
+
+#letterBox button:hover .filled {
+  opacity: 1;
+  animation: beatingHeart 1.2s infinite;
+}
+
+
+
+
+
+/* #no {
+	background: #ff6b6b;
+	position: absolute; /* musi być absolute */
+	/* transition: transform 0.3s ease-out;
+	overflow: hidden;
+	border-radius: 30px;
+} */
+
+/* #no::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -75%;
+	width: 50%;
+	height: 100%;
+	background: rgba(255,255,255,0.4);
+	transform: skewX(-25deg);
+	transition: all 0.5s;
+}
+
+#no.smuga::after {
+	left: 125%;
+} */ 
+
+
+/* ===================== */
+/* PODŚWIETLENIE TŁA */
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	background: rgba(0,0,0,0.2);
+	backdrop-filter: blur(6px);
+	opacity: 0;
+	transition: opacity 0.6s ease;
+	z-index: 500;
+	pointer-events: none;
+}
+
+body.letter-open::before {
+	opacity: 1;
+}
+
+/* ===================== */
+/* SERDUSZKA W TLE */
+.heart {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: #ff5577;
+	clip-path: polygon(
+		50% 0%, 61% 11%, 75% 11%, 87% 22%, 87% 35%, 75% 50%, 50% 75%, 
+		25% 50%, 13% 35%, 13% 22%, 25% 11%, 39% 11%
+	);
+	opacity: 0.8;
+	animation: float 6s linear infinite;
+}
+
+@keyframes float {
+	0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.7; }
+	50% { transform: translateY(-200px) translateX(50px) rotate(180deg); opacity: 1; }
+	100% { transform: translateY(-400px) translateX(-50px) rotate(360deg); opacity: 0; }
+}
+
+
+
+
+#letterBox {
+    /* Pozycjonowanie */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 850px;
+    max-width: 90vw;
+    max-height: 90vh;
+    
+    /* Efekt 3D - lekkie pochylenie */
+    transform: translate(-50%, -50%) perspective(1000px) rotateX(5deg) scale(0.6);
+
+    /* Tło: Miękki gradient z efektem głębi */
+    /* background: linear-gradient(145deg, #ffffff, #ffdce5); */
+
+
+	/* background: radial-gradient(circle at 25% 25%, #a3b1c6 15%, transparent 15%),
+    radial-gradient(circle at 75% 75%, #a3b1c6 15%, transparent 15%);
+  background-size: 10px 10px;
+  background-color: #e0e7ed; */
+
+  --size: 80px; /* control the size */
+  --color: #fddfff;
+
+  --l: var(--color) 20%, #0000 0;
+  --bg: 35%, #d1c0b644 0 45%, var(--color) 0;
+  background: linear-gradient(
+      45deg,
+      var(--l) 45%,
+      var(--color) 0 70%,
+      #db777700 0
+    ),
+    linear-gradient(-45deg, var(--l) var(--bg) 70%, #0000 0),
+    linear-gradient(45deg, var(--color) var(--bg));
+  background-size: var(--size) var(--size);
+
+    
+    /* WYPUKŁE GRANICE (Claymorphism) */
+    border-radius: 50px;
+    border: 8px solid #ffb3c6;
+    
+    /* Złożone cienie: zewnętrzne (poświata) i wewnętrzne (wypukłość) */
+    box-shadow: 
+        /* Głębia na zewnątrz */
+        0 20px 50px rgba(255, 20, 147, 0.3), 
+        15px 15px 30px rgba(0, 0, 0, 0.1),
+        /* Wypukłość wewnątrz (efekt 3D ramki) */
+        inset 10px 10px 20px rgba(255, 255, 255, 0.8), 
+        inset -10px -10px 20px rgba(255, 145, 175, 0.5),
+        /* Dodatkowy połysk na krawędzi */
+        0 0 0 10px rgba(255, 255, 255, 0.4);
+
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+
+    /* Animacje */
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1500;
+    
+    /* Efekt połysku przechodzącego przez box */
+    overflow: hidden;
+}
+
+/* Stan po pokazaniu - prostuje się i powiększa */
+#letterBox.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg) scale(0.8);
+}
+
+/* Efekt "pływającego" połysku w tle */
+#letterBox::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    animation: floatGlow 6s infinite linear;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes floatGlow {
+    0% { transform: rotate(0deg) translate(-10%, -10%); }
+    100% { transform: rotate(360deg) translate(10%, 10%); }
+}
+
+/* Wypukły, "żelkowy" nagłówek */
+#letterBox h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: #ff4d6d;
+    text-shadow: 
+        2px 2px 0px #fff, 
+        5px 5px 15px rgba(255, 77, 109, 0.4);
+    z-index: 1;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+}
+
+/* Dodatkowy efekt "szklanej" tafli na górze */
+#letterBox::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    border-radius: 50px 50px 0 0;
+    pointer-events: none;
+}

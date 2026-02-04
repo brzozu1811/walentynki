@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>🔐 Dostęp</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* font-family: 'Montserrat', sans-serif; */
+        font-family: "Bungee", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        background-color: transparent;
+    }
+
+    /* --- Tło gradientowe zintegrowane z kontenerem cząsteczek --- */
+    #particles-js {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        
+        /* NOWY, ANIMOWANY GRADIENT */
+        background: linear-gradient(-45deg, #ff9a9e, #fecfef, #feada6, #f5efef);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    /* Klatki animacji dla gradientu */
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* --- Treść na środku (ekran blokady) --- */
+    #lockScreen {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        text-align: center;
+        color: #880e4f;
+        /* Dodatkowe style dla czytelności na gradiencie */
+        background: rgba(255, 255, 255, 0.3);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    #lockScreen h1 {
+        font-size: 2.5rem;
+        margin: 0 0 20px 0;
+        /* STARY CIEŃ (miękki): text-shadow: 0 2px 10px rgba(255, 255, 255, 0.6); */
+        
+        /* NOWY CIEŃ 3D (Retro blokowy) */
+        /* Tworzymy kilka warstw cienia, każda przesunięta o 1px dalej i nieco ciemniejsza */
+        text-shadow: 
+            1px 1px 0px #7a0c46,
+            2px 2px 0px #6b0a3d,
+            3px 3px 0px #5c0935,
+            4px 4px 0px #4d072c,
+            5px 5px 8px rgba(0,0,0,0.3); /* Ostatnia warstwa to miękki cień pod spodem */
+    }
+    
+    #lockScreen input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #880e4f; /* Zmieniłem obramowanie na kolor tekstu */
+        font-size: 1rem;
+        outline: none;
+        font-family: "Bungee", sans-serif; /* Input też niech ma tę czcionkę */
+        color: #880e4f;
+        background: rgba(255,255,255,0.8);
+    }
+
+    #lockScreen button {
+        padding: 10px 30px;
+        border-radius: 20px;
+        border: none;
+        background-color: #e91e63;
+        color: white;
+        font-weight: bold;
+        font-family: "Bungee", sans-serif; /* Przycisk też czcionką Bungee */
+        cursor: pointer;
+        transition: transform 0.1s, background 0.3s; /* Dodano transform do animacji kliknięcia */
+        
+        /* Delikatny efekt 3D dla przycisku */
+        text-shadow: 1px 1px 0px #a8003d;
+        box-shadow: 0 4px 0 #a8003d; /* Cień pod przyciskiem */
+        margin-top: 10px;
+    }
+
+    #lockScreen button:hover {
+        background-color: #c2185b;
+    }
+
+    /* Efekt wciśnięcia przycisku */
+    #lockScreen button:active {
+        transform: translateY(4px); /* Przycisk idzie w dół */
+        box-shadow: 0 0px 0 #a8003d; /* Cień znika */
+    }
+
+</style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <div id="lockScreen">
+      <h1>🔐 WALENTYNKI</h1>
+      <input type="password" id="code" placeholder="podaj hasło">
+      <br><br>
+      <button onclick="checkCode()">OK</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        /* Obrazek serca SVG */
+        var heartSVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23e91e63' d='M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z'%2F%3E%3C%2Fsvg%3E";
+
+        particlesJS("particles-js", {
+          "particles": {
+            "number": {
+              "value": 40,
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "shape": {
+              "type": "image",
+              "image": {
+                "src": heartSVG,
+                "width": 100,
+                "height": 100
+              }
+            },
+            "opacity": {
+              "value": 0.7,
+              "random": true
+            },
+            "size": {
+              "value": 25,
+              "random": true,
+              "anim": {
+                "enable": true, /* Pulsowanie serc */
+                "speed": 10,
+                "size_min": 15,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true, /* Linie łączące */
+              "distance": 150,
+              "color": "#e91e63",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true, /* Ruch */
+              "speed": 2,
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "bubble"
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push"
+              },
+              "resize": true
+            },
+            "modes": {
+              "bubble": {
+                "distance": 200,
+                "size": 40,
+                "duration": 2,
+                "opacity": 1
+              }
+            }
+          },
+          "retina_detect": true
+        });
+    </script>
+
+    <script src="js/config.js"></script>
+    <script src="js/lock.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lockScreen {
+  color: white;
+  text-align: center;
+}
+
+#lockScreen input {
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+#letterBox {
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+button {
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+#yes, #ofc {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: #ccc;
+  position: absolute;
+  z-index: 10000;
+}
+
+
+.emoji-particle {
+    position: fixed;
+    bottom: -50px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 9999;
+    user-select: none;
+    font-size: 30px;
+    /* Płynny lot i znikanie */
+  transition: transform 2s cubic-bezier(0.1, 1, 0.5, 1), opacity 2s ease-in;
+    opacity: 1;
+}
